@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+
+import socket
+import threading
+
+class User:
+	def __init__(self, conn, addr):
+		self.conn = conn
+		self.addr = addr
+
+	def handle_conn(self):
+		print('connected by', self.addr)
+		while True:
+			data = self.conn.recv(400)
+			for user in users:
+				if user is not self:
+					user.conn.send(data)
+
+users = []
+
+def main():
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+	s.bind(('', 63636))
+	s.listen(2)
+
+	while True:
+		conn, addr = s.accept()
+		user = User(conn, addr)
+		users.append(user)
+		threading.Thread(target=user.handle_conn).start()
+
+if __name__ == '__main__':
+	main()
