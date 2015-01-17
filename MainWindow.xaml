@@ -5,6 +5,9 @@
 	<Grid>
 		<Button x:Name="ptt" Content="PTT" HorizontalAlignment="Left" Margin="220,155,222,0" VerticalAlignment="Top" Width="75" PreviewMouseDown="ptt_PreviewMouseDown" PreviewMouseUp="ptt_PreviewMouseUp"/>
 		<Label x:Name="recording" Content="recording" HorizontalAlignment="Left" Margin="220,129,222,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,0.423" Width="75" HorizontalContentAlignment="Center" Visibility="Hidden"/>
+		<TextBox x:Name="host" HorizontalAlignment="Left" Height="23" Margin="31,30,0,0" TextWrapping="Wrap" Text="192.168.1.34" VerticalAlignment="Top" Width="120"/>
+		<Button x:Name="connect" Content="connect" HorizontalAlignment="Left" Margin="170,30,0,0" VerticalAlignment="Top" Width="75" Click="connect_Click"/>
+		<Label x:Name="serverStatus" Content="Disconnected" HorizontalAlignment="Left" Margin="31,58,0,0" VerticalAlignment="Top" Width="214"/>
 
 	</Grid>
 </Window>
